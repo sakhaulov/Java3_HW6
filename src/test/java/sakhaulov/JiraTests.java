@@ -129,7 +129,7 @@ public class JiraTests extends AbstractTest {
 
     @Test
     @DisplayName("Создание собственного типа документа")
-    void addingStandartIssueTypeTest() throws InterruptedException {
+    void addingStandartIssueTypeTest() {
 
         String testIssueTypeName = "TestIssueType" + (int) (Math.random() * (1000 - 1)) + 1;
 
@@ -157,7 +157,8 @@ public class JiraTests extends AbstractTest {
 
         //Assertions
         Assertions.assertTrue(getDriver()
-                .findElements(By.xpath(String.format(".//strong[contains(.,'%s')]", testIssueTypeName))).size() > 0);
+                .findElements(By.xpath(String.format(".//strong[contains(.,'%s')]", testIssueTypeName))).size() > 0,
+                "Не обнаружен созданный тип документации");
 
     }
 }
